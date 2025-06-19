@@ -1,0 +1,15 @@
+Spouštím odeslani-emailu.php
+E-maily byly odeslány: 2025-06-19 16:43:31
+Spouštím odeslani-emailu.php
+E-maily byly odeslány: 2025-06-19 16:48:02
+
+Spouštím odeslani-emailu.php
+Chyba při odesílání: SMTP Error: Could not authenticate.
+Spouštím odeslani-emailu.php
+E-maily byly odeslány: 2025-06-19 17:25:22
+Spouštím odeslani-emailu.php
+Žádní odběratelé nebo chyba v dotazu.
+Spouštím odeslani-emailu.php
+E-maily byly odeslány: 2025-06-19 17:32:28
+Spouštím odeslani-emailu.php
+E-maily byly odeslány: 2025-06-19 18:25:17

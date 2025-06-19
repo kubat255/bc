@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Obec Častrov – Domovská stránka</title>
+<style>
+
+header {
+  background-color: #0b3d91;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+    body, main {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+  
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      background-color: #0066cc;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover {
+      background-color: #005bb5;
+    }
+
+    
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    footer {
+      background-color: #004d99;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 2000px;   
+      
+      width: 100%;          
+      margin: 0 auto 30px auto; 
+      overflow: hidden;
+      user-select: none;
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      background-color: #000;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+      display: block;
+      border-radius: 3px;
+    }
+
+    .fade {
+      animation: fade 1s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.4; }
+      to   { opacity: 1; }
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+      user-select: none;
+      z-index: 10;
+      transition: background-color 0.3s ease;
+      border-radius: 3px;
+      top: 10px;
+      margin-top: 0;
+    }
+
+    .prev {
+      left: 10px;
+      top: 45%; 
+    }
+
+    .next {
+      right: 10px;
+      top: 45%;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+  </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/><link href="styles.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+.carousel-control-prev,
+.carousel-control-next {
+  width: auto;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background: none;
+  width: auto;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px;
+  border-radius: 50%;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: drop-shadow(1px 1px 2px black);
+}
+</style>
+</head>
+<body>
+<div class="carousel-item">
+<img alt="Obec 3" class="d-block w-100" src="obrazky/obec3.jpg"/>
+</div>
+<button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselObec" type="button">
+<span aria-hidden="true" class="carousel-control-prev-icon"></span>
+<span class="visually-hidden">Předchozí</span>
+</button>
+<button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselObec" type="button">
+<span aria-hidden="true" class="carousel-control-next-icon"></span>
+<span class="visually-hidden">Další</span>
+</button>
+<header><div style="position:absolute; top:10px; right:20px;">
+<a href="admin-login.php" style="color:white; font-weight:bold;">Admin Login</a>
+</div>
+<h1>Obec Častrov</h1>
+</header>
+<nav>
+<ul>
+<li><a href="index.html">Domů</a></li>
+<li><a href="kronika.php">Kronika</a></li>
+<li><a href="fotogalerie.php">Fotogalerie</a></li>
+<li><a href="kalendar.html">Kalendář akcí</a></li>
+<li><a href="kontakty.html">Kontakty</a></li>
+</ul>
+<div class="carousel slide my-4" data-bs-interval="6000" data-bs-ride="carousel" id="carouselObec">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img alt="Obec 1" class="d-block w-100" src="obrazky/obec1.jpg"/>
+</div>
+<div class="carousel-item">
+<img alt="Obec 2" class="d-block w-100" src="obrazky/obec2.jpg"/>
+</div>
+</div></div></nav>
+<main>
+<section id="udalosti" style="padding: 40px; background-color: #f8f9fa">
+<div class="container">
+<h2 style="text-align:center; margin-bottom: 30px;">Aktuální události</h2>
+<div id="udalosti-list" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center"></div>
+</div>
+</section>
+<section id="o-obci">
+  <div class="container">
+    <h2>Informace o obci</h2>
+    <img src="obec1.jpg" alt="Obec Častrov" style="float: right; width: 300px; margin: 0 0 10px 20px; border-radius: 10px;">
+    <p style="text-align: left;">
+      Obec Častrov se nachází v malebném kraji Vysočina. Nabízí bohatou historii, krásnou přírodu a přátelskou komunitu. 
+      Součástí obce jsou také místní části jako Metánov, Pelec, Ctiboř a další. 
+      Častrov je ideálním místem pro odpočinek, rekreaci i poklidný život v souladu s přírodou.
+    </p>
+    <div style="clear: both;"></div>
+  </div>
+</section>
+
+<div id="modal" style="
+
+display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.7); z-index: 9999; justify-content:center; align-items:center;">
+<div style="background:white; padding: 20px; max-width:600px; width:90%; position:relative;">
+<span onclick="zavritModal()" style="position:absolute; top:10px; right:15px; font-size: 24px; cursor:pointer">×</span>
+<h3 id="modal-nadpis"></h3>
+<div id="modal-datum" style="margin-bottom: 10px; font-size: 0.9em; color: #666;"></div>
+<img alt="obrazek" id="modal-obrazek" src="" style="width:100%; max-height:300px; object-fit:cover; margin-bottom:15px"/>
+<p id="modal-popis"></p>
+</div>
+</div>
+</main>
+<section id="newsletter">
+  <div class="container">
+    <h2>Odběr novinek</h2>
+    <form id="subscribeForm" action="subscribe.php" method="post">
+      <input type="email" name="email" placeholder="Zadejte svůj e-mail" required style="padding: 8px; width: 300px;">
+      <button type="submit" style="padding: 8px 16px;">Odebírat</button>
+    </form>
+    <p>Zadejte svůj e-mail a získejte upozornění na nové události v obci.</p>
+  </div>
+</section>
+<footer>
+<p>© 2025 Obec Častrov | Všechna práva vyhrazena</p>
+</footer>
+<script>
+    let slideIndex = 0;
+    let slides;
+
+    function showSlides() {
+      slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 5000);
+    }
+
+    function showSlide(n) {
+      slides = document.getElementsByClassName("slide");
+      if (n >= slides.length) {
+        slideIndex = 0;
+      } else if (n < 0) {
+        slideIndex = slides.length - 1;
+      } else {
+        slideIndex = n;
+      }
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+
+    function changeSlide(n) {
+      showSlide(slideIndex + n);
+    }
+
+    window.onload = function() {
+      slides = document.getElementsByClassName("slide");
+      showSlide(slideIndex);
+      setTimeout(showSlides, 5000);
+    };
+  </script>
+<script>
+fetch("load-novinky.php")
+  .then(res => res.json())
+  .then(udalosti => {
+    const list = document.getElementById("udalosti-list");
+    udalosti.forEach(u => {
+      const karta = document.createElement("div");
+      karta.style.width = "250px";
+      karta.style.border = "1px solid #ccc";
+      karta.style.borderRadius = "10px";
+      karta.style.overflow = "hidden";
+      karta.style.cursor = "pointer";
+      karta.style.backgroundColor = "white";
+      karta.onclick = () => otevriModal(u);
+
+      karta.innerHTML = `
+        <img src="${u.obrazek}" style="width:100%; height:150px; object-fit:cover">
+        <div style="padding: 10px">
+          <h4>${u.nadpis}</h4>
+<small>${new Date(u.datum).toLocaleString("cs-CZ", { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</small>
+          <p style="font-size: 0.9em; color: #555">${u.popis.substring(0, 80)}...</p>
+        </div>
+      `;
+      list.appendChild(karta);
+    });
+  });
+
+function otevriModal(udalost) {
+  document.getElementById("modal-nadpis").textContent = udalost.nadpis;
+document.getElementById("modal-datum").textContent = new Date(udalost.datum).toLocaleString("cs-CZ", { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  document.getElementById("modal-popis").textContent = udalost.popis;
+  document.getElementById("modal-obrazek").src = udalost.obrazek;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function zavritModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="subscribeModalLabel">Odběr novinek</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zavřít"></button>
+      </div>
+      <div class="modal-body">
+        Děkujeme za přihlášení k odběru novinek.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch('subscribe.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        var myModal = new bootstrap.Modal(document.getElementById('subscribeModal'));
+        myModal.show();
+        form.reset();
+    })
+    .catch(error => {
+        alert("Došlo k chybě při přihlášení k odběru.");
+        console.error(error);
+    });
+});
+</script>
+
+</body>
+</html>
+
+

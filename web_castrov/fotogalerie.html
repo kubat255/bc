@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<title>Fotogalerie | Častrov</title>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: auto;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .lightbox .arrow {
+      position: absolute;
+      top: 50%;
+      font-size: 3rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .lightbox .arrow.left { left: 5%; }
+    .lightbox .arrow.right { right: 5%; }
+
+    .lightbox .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<header><div style="position:absolute; top:10px; right:20px;">
+<a href="admin-login.php" style="color:white; font-weight:bold;">Admin Login</a>
+</div>
+
+<h1>Kronika obce Častrov</h1>
+<nav>
+<ul>
+<li><a href="index.html">Domů</a></li>
+<li><a href="kronika.php">Kronika</a></li>
+<li><a href="fotogalerie.php">Fotogalerie</a></li>
+<li><a href="kalendar.html">Kalendář akcí</a></li>
+<li><a href="kontakty.html">Kontakty</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h2>Fotogalerie</h2>
+<div class="gallery">
+<img alt="Slavnost 2023" src="fotky/wp1.jpg"/>
+<img alt="Výstava 2022" src="fotky/wp2.png"/>
+<img alt="Koncert 2021" src="fotky/wp3.jpg"/>
+<img alt="Koncert 2022" src="fotky/wp4.jpeg"/>
+<img alt="Koncert 2022" src="fotky/wp5.jpg"/>
+<img alt="Koncert 2022" src="fotky/wp6.jpg"/>
+<img alt="Koncert 2022" src="fotky/wp7.png"/>
+</div>
+</main>
+<footer>
+<p>© 2025 Obec Častrov</p>
+</footer>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+<span class="arrow left" id="prev">←</span>
+<img alt="Zvětšený obrázek" id="lightbox-img" src=""/>
+<span class="arrow right" id="next">→</span>
+<span class="close" id="close">×</span>
+</div>
+<script>
+    const galleryImages = document.querySelectorAll('.gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    let currentIndex = 0;
+
+    function showLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = galleryImages[index].src;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      showLightbox(currentIndex);
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      showLightbox(currentIndex);
+    }
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => showLightbox(index));
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  </script>
+</body>
+</html>
